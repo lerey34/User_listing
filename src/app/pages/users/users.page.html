@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="dark">
+    <ion-title>Users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h4>Filter</h4>
+  <ion-item>
+    <ion-label>Services</ion-label>
+    <ion-select
+      placeholder="All"
+      [(ngModel)]="selectedService"
+      (ionChange)="onServiceSelect($event)"
+    >
+      <ion-select-option value="all">All</ion-select-option>
+      <ion-select-option value="deco">Deco</ion-select-option>
+      <ion-select-option value="sound">Sound</ion-select-option>
+      <ion-select-option value="lights">Lights</ion-select-option>
+      <ion-select-option value="cocktail">Cocktail Mixing</ion-select-option>
+      <ion-select-option value="chef">Chef</ion-select-option>
+      <ion-select-option value="tents">Tents</ion-select-option>
+      <ion-select-option value="bouncer">Bouncers</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <h4>Browse</h4>
+  <ion-list *ngIf="serviceProviders">
+    <ion-item *ngFor="let provider of serviceProviders">
+      <ion-thumbnail slot="start">
+        <img src="{{provider.pic}}" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="heading">{{provider.firstName}} {{provider.lastName}}</h3>
+        <p>{{provider.bio}}</p>
+        <ion-badge color="dark">{{provider.service}}</ion-badge>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
