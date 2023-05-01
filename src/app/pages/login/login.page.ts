@@ -32,17 +32,19 @@ export class LoginPage implements OnInit {
       password: this.password,
     };
 
-    this.http.post('http://localhost:3000/users/login', credentials).subscribe(
-      (res) => {
-        this.isLoading = false;
-        localStorage.setItem('User', JSON.stringify(res));
-        this.router.navigateByUrl('/users', { replaceUrl: true });
-      },
-      (error) => {
-        this.isLoading = false;
-        this.presentAlert('Login Failed', error.error.error);
-      }
-    );
+    this.http
+      .post('http://192.168.1.30:3000/users/login', credentials)
+      .subscribe(
+        (res) => {
+          this.isLoading = false;
+          localStorage.setItem('User', JSON.stringify(res));
+          this.router.navigateByUrl('/users', { replaceUrl: true });
+        },
+        (error) => {
+          this.isLoading = false;
+          this.presentAlert('Login Failed', error.error.error);
+        }
+      );
   }
 
   async presentAlert(header: string, message: string) {

@@ -18,7 +18,7 @@ export class UsersPage implements OnInit {
     if (user == null) {
       this.router.navigateByUrl('/login', { replaceUrl: true });
     } else {
-      this.http.get('http://localhost:3000/users').subscribe(
+      this.http.get('http://192.168.1.30:3000/users').subscribe(
         (res) => {
           this.serviceProviders = res;
           this.originalServiceProvider = res;
