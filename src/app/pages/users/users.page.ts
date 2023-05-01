@@ -44,4 +44,9 @@ export class UsersPage implements OnInit {
       );
     }
   }
+
+  logout() {
+    localStorage.removeItem('User');
+    this.router.navigateByUrl('/login', { replaceUrl: true });
+  }
 }

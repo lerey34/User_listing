@@ -12,6 +12,7 @@ export class LoginPage implements OnInit {
   email!: string;
   password!: string;
   isLoading: boolean = false;
+  eror!: string;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -42,7 +43,8 @@ export class LoginPage implements OnInit {
         },
         (error) => {
           this.isLoading = false;
-          this.presentAlert('Login Failed', error.error.error);
+          this.presentAlert('Login Failed', error);
+          return (this.eror = JSON.stringify(error));
         }
       );
   }
